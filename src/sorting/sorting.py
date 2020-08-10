@@ -7,7 +7,7 @@ list = []
 for _ in range(0,25):
     list.append(random.randint(0,50))
 
-print(list)
+# print(list)
 
 def merge(arrA, arrB):
 
@@ -51,11 +51,26 @@ def merge_sort(arr):
 # utilize any extra memory
 # In other words, your implementation should not allocate any additional lists 
 # or data structures; it can only re-use the memory it was given as input
+
+
+
 def merge_in_place(arr, start, mid, end):
     # Your code here
-    pass
-
+  
+    while start < mid and mid <= end:
+        if arr[start] > arr[mid]:
+            arr.insert(start, arr.pop(mid))
+            start += 1
+            mid += 1
+        else:
+            start += 1
 
 def merge_sort_in_place(arr, l, r):
     # Your code here
-    pass
+    if abs(l - r) > 1:
+        merge_sort_in_place(arr, l, (l+r) //2)
+        merge_sort_in_place(arr, (l+r) //2, r)
+        merge_in_place(arr, l, (l+r) //2, r)
+    else:
+        merge_in_place(arr, l, r, r)
+    

@@ -37,12 +37,6 @@ def agnostic_binary_search(arr, target):
 
     while start != end:
 
-        print(start, end)
-
-        
-        
-        print(start, end, ascending, middle, arr[middle], target)
-
         if arr[middle] == target:
             return middle
 
