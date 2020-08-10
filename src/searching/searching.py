@@ -2,8 +2,6 @@
 def binary_search(arr, target, start, end):
     # Your code here
 
-    print(arr, target, start, end)
-
     if end < start:
         return -1
 
@@ -28,4 +26,39 @@ print(binary_search(list, 2, 0, 3))
 # or iteratively
 def agnostic_binary_search(arr, target):
     # Your code here
-    pass
+
+    start = 0
+    end = len(arr) - 1
+    middle = None
+
+    ascending = True if arr[start] < arr[end] else False
+
+    middle = len(arr) // 2
+
+    while start != end:
+
+        print(start, end)
+
+        
+        
+        print(start, end, ascending, middle, arr[middle], target)
+
+        if arr[middle] == target:
+            return middle
+
+        if(target < arr[middle]):
+            if ascending:
+                end = middle
+                middle = len(arr[start:end]) // 2
+            else:
+                start = middle + 1
+                middle = (start + end) // 2
+        else:
+            if ascending:
+                start = middle + 1
+                middle = (start + end) // 2
+            else:
+                end = middle
+                middle = len(arr[start:end]) // 2
+       
+    return -1
