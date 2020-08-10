@@ -2,6 +2,23 @@
 def binary_search(arr, target, start, end):
     # Your code here
 
+    print(arr, target, start, end)
+
+    if end < start:
+        return -1
+
+    middle = (start + end) // 2
+
+    if arr[middle] == target:
+        return middle
+    
+    elif (target < arr[middle]):
+        return binary_search(arr, target, start, middle -1)
+    else: 
+        return binary_search(arr, target, middle + 1, end)
+
+list = [1,2,3,4]
+print(binary_search(list, 2, 0, 3))
 
 # STRETCH: implement an order-agnostic binary search
 # This version of binary search should correctly find 
@@ -11,4 +28,4 @@ def binary_search(arr, target, start, end):
 # or iteratively
 def agnostic_binary_search(arr, target):
     # Your code here
-
+    pass
