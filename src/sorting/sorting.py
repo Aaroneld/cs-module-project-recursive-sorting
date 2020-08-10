@@ -4,8 +4,8 @@ import math
 
 list = []
 
-for _ in range(0,25):
-    list.append(random.randint(0,50))
+for _ in range(0,100):
+    list.append(random.randint(0,100))
 
 # print(list)
 
@@ -52,7 +52,7 @@ def merge_sort(arr):
 # In other words, your implementation should not allocate any additional lists 
 # or data structures; it can only re-use the memory it was given as input
 
-
+# print(merge_sort(list))
 
 def merge_in_place(arr, start, mid, end):
     # Your code here
@@ -67,10 +67,16 @@ def merge_in_place(arr, start, mid, end):
 
 def merge_sort_in_place(arr, l, r):
     # Your code here
+    print(l,r)
     if abs(l - r) > 1:
-        merge_sort_in_place(arr, l, (l+r) //2)
-        merge_sort_in_place(arr, (l+r) //2, r)
-        merge_in_place(arr, l, (l+r) //2, r)
+
+        m = l + (r - l) // 2
+
+        merge_sort_in_place(arr, l, m)
+        merge_sort_in_place(arr, m + 1, r)
+        merge_in_place(arr, l, m + 1, r)
     else:
         merge_in_place(arr, l, r, r)
     
+merge_sort_in_place(list, 0, len(list) -1)
+print(list)
