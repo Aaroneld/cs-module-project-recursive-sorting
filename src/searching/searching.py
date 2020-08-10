@@ -43,16 +43,16 @@ def agnostic_binary_search(arr, target):
         if(target < arr[middle]):
             if ascending:
                 end = middle
-                middle = len(arr[start:end]) // 2
+               
             else:
                 start = middle + 1
-                middle = (start + end) // 2
+                
         else:
             if ascending:
                 start = middle + 1
-                middle = (start + end) // 2
             else:
                 end = middle
-                middle = len(arr[start:end]) // 2
+                
+        middle = (start + end) // 2
        
     return -1
